@@ -41,7 +41,7 @@ def webhook():
     req = request.get_json(silent=True, force=True)
     result = req.get("result")
     parameters = result.get("parameters")
-    weapon_name = parameters.get("weapon_name")
+    weapon_name = parameters.get("hito")
 
     scope = ['https://spreadsheets.google.com/feeds']
 
@@ -52,7 +52,7 @@ def webhook():
     # # 共有設定したスプレッドシートの名前を指定する
     worksheet = gc.open("Google Assistant Commands").get_worksheet(1)
 
-    cell = worksheet.find(weapon_name)
+    cell = worksheet.find(hito)
 
     text = str(cell.value) + str(worksheet.cell(cell.row,cell.col+1).value) + "パーセント"
     r = make_response(jsonify({'speech':text,'displayText':text}))
