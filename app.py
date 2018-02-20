@@ -46,11 +46,11 @@ def webhook():
     scope = ['https://spreadsheets.google.com/feeds']
 
     #ダウンロードしたjsonファイルを同じフォルダに格納して指定する
-    credentials = ServiceAccountCredentials.from_json_keyfile_name('xxxxxxxxxx.json', scope)
+    credentials = ServiceAccountCredentials.from_json_keyfile_name('nanbaprject-59c58089085d.json', scope)
     gc = gspread.authorize(credentials)
 
     # # 共有設定したスプレッドシートの名前を指定する
-    worksheet = gc.open("Google Assistant Commands").get_worksheet(1)
+    worksheet = gc.open("電話番号").get_worksheet(1)
 
     cell = worksheet.find(hito)
 
